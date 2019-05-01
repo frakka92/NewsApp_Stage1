@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="attraction_pic_height">100dp</dimen>
+
+    <dimen name="padding_attraction_layout">16dp</dimen>
+
+    <dimen name="padding_start_title">16dp</dimen>
+    <dimen name="padding_left_title">16dp</dimen>
+    <dimen name="padding_end_title">16dp</dimen>
+    <dimen name="padding_right_title">16dp</dimen>
+
+    <dimen name="title_size">24sp</dimen>
+
+    <dimen name="padding_start_address">16dp</dimen>
+    <dimen name="padding_left_address">16dp</dimen>
+    <dimen name="padding_end_address">16dp</dimen>
+    <dimen name="padding_right_address">16dp</dimen>
+    <dimen name="address_size">16sp</dimen>
+    <dimen name="attraction_address_margin_top">8dp</dimen>
+    <dimen name="attraction_detail_description_margin_top">8dp</dimen>
+    <dimen name="attraction_details_title_margin_top">8dp</dimen>
+    <dimen name="attraction_detais_pic_height">300dp</dimen>
+</resources>
