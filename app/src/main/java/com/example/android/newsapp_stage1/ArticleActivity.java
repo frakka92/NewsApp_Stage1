@@ -23,8 +23,6 @@ public class ArticleActivity extends AppCompatActivity implements LoaderManager.
 
     private static final String REQUEST_URL = "https://content.guardianapis.com/search?api-key=12b62687-af53-4c14-a6c9-93260e94e4b0";
 
-    private static final String LOG_TAG = ArticleActivity.class.getName();
-
     /**
      * Constant value for the earthquake loader ID. We can choose any integer.
      * This really only comes into play if you're using multiple loaders.
@@ -62,22 +60,18 @@ public class ArticleActivity extends AppCompatActivity implements LoaderManager.
             LoaderManager loaderManager = getLoaderManager();
             loaderManager.initLoader(EARTHQUAKE_LOADER_ID, null, this);
 
-
             // Find a reference to the {@link ListView} in the layout
             ListView earthquakeListView = findViewById(R.id.list_article);
 
             mEmptyStateTextView = findViewById(R.id.empty);
             earthquakeListView.setEmptyView(mEmptyStateTextView);
 
-
             // Create a new {@link ArrayAdapter} of earthquakes
             mAdapter = new ArticleAdapter(this, new ArrayList<Article>());
-
 
             // Set the adapter on the {@link ListView}
             // so the list can be populated in the user interface
             earthquakeListView.setAdapter(mAdapter);
-
 
             earthquakeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
@@ -93,7 +87,6 @@ public class ArticleActivity extends AppCompatActivity implements LoaderManager.
         }
     }
 
-
     @Override
     public Loader<List<Article>> onCreateLoader(int id, Bundle args) {
         return new ArticleLoader(this, REQUEST_URL);
@@ -101,8 +94,6 @@ public class ArticleActivity extends AppCompatActivity implements LoaderManager.
 
     @Override
     public void onLoadFinished(Loader<List<Article>> loader, List<Article> articles) {
-        Log.i(LOG_TAG, "onLoadFinished");
-
 
         ProgressBar progressBar = findViewById(R.id.progress);
         progressBar.setVisibility(View.GONE);
@@ -113,13 +104,11 @@ public class ArticleActivity extends AppCompatActivity implements LoaderManager.
 
         if (articles != null && !articles.isEmpty()) {
             mAdapter.addAll(articles);
-
         }
     }
 
     @Override
     public void onLoaderReset(Loader<List<Article>> loader) {
-        Log.i(LOG_TAG, "onLoaderReset");
         mAdapter.clear();
     }
 }

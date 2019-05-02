@@ -19,12 +19,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Helper methods related to requesting and receiving earthquake data from guardianapis.
+ * Helper methods related to requesting and receiving earthquake data from guardian_apis.
  */
 public class QueryUtils {
 
-    /** Tag for the log messages */
-    public static final String LOG_TAG = QueryUtils.class.getName();
+    /**
+     * Tag for the log messages
+     */
+    private static final String LOG_TAG = QueryUtils.class.getName();
 
     /**
      * Create a private constructor because no one should ever create a {@link QueryUtils} object.
@@ -48,10 +50,7 @@ public class QueryUtils {
             Log.e(LOG_TAG, "Error closing input stream", e);
         }
 
-        List<Article> articles = extractFeatureFromJson(jsonResponse);
-
-        return articles;
-
+        return extractFeatureFromJson(jsonResponse);
     }
 
     private static URL createUrl(String requestURL) {
@@ -67,7 +66,7 @@ public class QueryUtils {
     private static String makeHttpRequest(URL url) throws IOException {
         String jsonResponse = "";
 
-        //if the url is null, return empyy string
+        //if the url is null, return empty string
         if (url == null)
             return jsonResponse;
 
@@ -146,14 +145,12 @@ public class QueryUtils {
 
                 String title = singleArticle.getString("webTitle");
                 String section = singleArticle.getString("sectionName");
-                String date = singleArticle.getString("webPublicationDate");
+                String date = singleArticle.getString("webPublicationDate").substring(0, 10);
                 String url = singleArticle.getString("webUrl");
 
                 Article article = new Article(title, section, date, url);
-
                 articles.add(article);
             }
-
         } catch (JSONException e) {
             Log.e(LOG_TAG, "Problem parsing the article JSON results", e);
         }

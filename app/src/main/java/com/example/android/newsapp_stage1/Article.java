@@ -16,7 +16,6 @@ public class Article {
     public Article(String mTitle, String mSection, String mDate, String mUrl) {
         this.mTitle = mTitle;
         this.mSection = mSection;
-
         this.mDate = mDate;
         this.mUrl = mUrl;
     }

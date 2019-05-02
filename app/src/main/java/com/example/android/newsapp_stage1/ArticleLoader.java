@@ -8,11 +8,6 @@ import java.util.List;
 public class ArticleLoader extends AsyncTaskLoader<List<Article>> {
 
     /**
-     * Tag for log messages
-     */
-    private static final String LOG_TAG = ArticleLoader.class.getName();
-
-    /**
      * Query Url
      */
     private String mUrl;
@@ -21,7 +16,7 @@ public class ArticleLoader extends AsyncTaskLoader<List<Article>> {
      * Constructs a new {@link ArticleLoader}.
      *
      * @param context of the activity
-     * @param url    to load data from
+     * @param url     to load data from
      */
 
     public ArticleLoader(Context context, String url) {
@@ -42,8 +37,7 @@ public class ArticleLoader extends AsyncTaskLoader<List<Article>> {
             return null;
 
         //Perform network request,parse the response, and extract a list of articles
-        List<Article> articles = QueryUtils.fetchArticleData(mUrl);
 
-        return articles;
+        return QueryUtils.fetchArticleData(mUrl);
     }
 }

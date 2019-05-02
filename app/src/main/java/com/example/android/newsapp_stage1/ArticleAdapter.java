@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class ArticleAdapter extends ArrayAdapter<Article> {
+class ArticleAdapter extends ArrayAdapter<Article> {
 
     public static class ViewHolder {
         TextView titleViewHolder, sectionViewHolder, dateViewHolder;
@@ -26,7 +26,6 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
     public ArticleAdapter(Context context, ArrayList<Article> articles) {
         super(context, 0, articles);
     }
-
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -51,7 +50,6 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         viewHolder.titleViewHolder.setText(currentArticle.getmTitle());
         viewHolder.sectionViewHolder.setText(currentArticle.getmSection());
         viewHolder.dateViewHolder.setText(currentArticle.getmDate());
-
 
         return listView;
     }
