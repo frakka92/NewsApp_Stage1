@@ -37,7 +37,6 @@ public class ArticleLoader extends AsyncTaskLoader<List<Article>> {
             return null;
 
         //Perform network request,parse the response, and extract a list of articles
-
         return QueryUtils.fetchArticleData(mUrl);
     }
 }

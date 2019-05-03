@@ -12,7 +12,7 @@ import java.util.ArrayList;
 class ArticleAdapter extends ArrayAdapter<Article> {
 
     public static class ViewHolder {
-        TextView titleViewHolder, sectionViewHolder, dateViewHolder;
+        TextView titleViewHolder, sectionViewHolder, authorViewHolder, dateViewHolder;
     }
 
     /**
@@ -37,6 +37,7 @@ class ArticleAdapter extends ArrayAdapter<Article> {
 
             holder.titleViewHolder = listView.findViewById(R.id.article_title);
             holder.sectionViewHolder = listView.findViewById(R.id.article_section);
+            holder.authorViewHolder = listView.findViewById(R.id.article_author);
             holder.dateViewHolder = listView.findViewById(R.id.article_date);
 
             listView.setTag(holder);
@@ -44,11 +45,11 @@ class ArticleAdapter extends ArrayAdapter<Article> {
         //I get the current article
 
         Article currentArticle = getItem(position);
-
         ViewHolder viewHolder = (ViewHolder) listView.getTag();
 
         viewHolder.titleViewHolder.setText(currentArticle.getmTitle());
         viewHolder.sectionViewHolder.setText(currentArticle.getmSection());
+        viewHolder.authorViewHolder.setText(currentArticle.getmAuthor());
         viewHolder.dateViewHolder.setText(currentArticle.getmDate());
 
         return listView;

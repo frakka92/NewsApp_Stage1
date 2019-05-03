@@ -9,7 +9,6 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -21,13 +20,13 @@ import java.util.List;
 
 public class ArticleActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<Article>> {
 
-    private static final String REQUEST_URL = "https://content.guardianapis.com/search?api-key=12b62687-af53-4c14-a6c9-93260e94e4b0";
+    private static final String REQUEST_URL = "https://content.guardianapis.com/search";
 
     /**
-     * Constant value for the earthquake loader ID. We can choose any integer.
+     * Constant value for the article loader ID. We can choose any integer.
      * This really only comes into play if you're using multiple loaders.
      */
-    private static final int EARTHQUAKE_LOADER_ID = 1;
+    private static final int ARTICLE_LOADER_ID = 1;
 
     /**
      * Adapter for the list of earthquakes
@@ -58,7 +57,7 @@ public class ArticleActivity extends AppCompatActivity implements LoaderManager.
         } else {
 
             LoaderManager loaderManager = getLoaderManager();
-            loaderManager.initLoader(EARTHQUAKE_LOADER_ID, null, this);
+            loaderManager.initLoader(ARTICLE_LOADER_ID, null, this);
 
             // Find a reference to the {@link ListView} in the layout
             ListView earthquakeListView = findViewById(R.id.list_article);
@@ -89,7 +88,14 @@ public class ArticleActivity extends AppCompatActivity implements LoaderManager.
 
     @Override
     public Loader<List<Article>> onCreateLoader(int id, Bundle args) {
-        return new ArticleLoader(this, REQUEST_URL);
+
+        Uri baseUri = Uri.parse(REQUEST_URL);
+        Uri.Builder uriBuilder = baseUri.buildUpon();
+
+        uriBuilder.appendQueryParameter("show-tags", "contributor");
+        uriBuilder.appendQueryParameter("api-key", "12b62687-af53-4c14-a6c9-93260e94e4b0");
+
+        return new ArticleLoader(this, uriBuilder.toString());
     }
 
     @Override
@@ -99,7 +105,6 @@ public class ArticleActivity extends AppCompatActivity implements LoaderManager.
         progressBar.setVisibility(View.GONE);
 
         mEmptyStateTextView.setText(getString(R.string.no_articles_found));
-
         mAdapter.clear();
 
         if (articles != null && !articles.isEmpty()) {

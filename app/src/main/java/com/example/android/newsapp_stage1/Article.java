@@ -4,18 +4,21 @@ public class Article {
 
     private String mTitle;
     private String mSection;
+    private String mAuthor;
     private String mDate;
     private String mUrl;
 
     /**
      * @param mTitle   title of the article
      * @param mSection section of the article
+     * @param mAuthor  author of the article
      * @param mDate    date of the article
      * @param mUrl     URL of the article
      */
-    public Article(String mTitle, String mSection, String mDate, String mUrl) {
+    public Article(String mTitle, String mSection, String mAuthor, String mDate, String mUrl) {
         this.mTitle = mTitle;
         this.mSection = mSection;
+        this.mAuthor = mAuthor;
         this.mDate = mDate;
         this.mUrl = mUrl;
     }
@@ -26,6 +29,10 @@ public class Article {
 
     public String getmSection() {
         return mSection;
+    }
+
+    public String getmAuthor() {
+        return mAuthor;
     }
 
     public String getmDate() {
@@ -41,6 +48,7 @@ public class Article {
         return "Article{" +
                 "mTitle='" + mTitle + '\'' +
                 ", mSection='" + mSection + '\'' +
+                ", mAuthor='" + mAuthor + '\'' +
                 ", mDate='" + mDate + '\'' +
                 ", mUrl='" + mUrl + '\'' +
                 '}';
